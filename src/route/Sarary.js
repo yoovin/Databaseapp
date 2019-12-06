@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-// import {select, Button} from 'react-bootstrap'
+import {Dropdown, DropdownButton} from 'react-bootstrap'
 
 export default class Sarary extends Component {
 
@@ -15,27 +15,6 @@ export default class Sarary extends Component {
     componentDidMount(){
         this.printSalary()
     }
-
-    // printNow = () =>{
-    //     const today = new Date()
-    //     const year = today.getFullYear();
-    //     const month = today.getMonth() + 1;
-    //     const date = today.getDate();
-    //     let hour = today.getHours();
-    //     let minute = today.getMinutes();
-    //     let second = today.getSeconds();
-    //     const ampm = hour >= 12 ? 'PM' : 'AM';
-    //      // 12시간제로 변경
-    //     hour %= 12;
-    //     hour = hour || 12; // 0 => 12
-
-    //     // 10미만인 분과 초를 2자리로 변경
-    //     minute = minute < 10 ? '0' + minute : minute;
-    //     second = second < 10 ? '0' + second : second;
-    //     const now = `${year}년 ${month}월 ${date}일 ${hour}:${minute}:${second} ${ampm}`;
-    //     this.setState({time:now})
-    //     setTimeout(this.printNow, 1000)
-    // }
 
     handleSelectChange = (unit) =>{
         this.setState({unit:unit})
@@ -77,11 +56,17 @@ export default class Sarary extends Component {
 
     selectBox = () =>{
         return(
-            <div className="btn-group" role="group" aria-label="Basic example">
-                <button type="button" onClick={()=>this.handleSelectChange("won")} className="btn btn-secondary">원</button>
-                <button type="button" onClick={()=>this.handleSelectChange("ubd")} className="btn btn-secondary">UBD</button>
-                <button type="button" onClick={()=>this.handleSelectChange("gookbob")} className="btn btn-secondary">국밥</button>
-            </div>
+            // <div className="btn-group" role="group" aria-label="Basic example">
+            //     <button type="button" onClick={()=>this.handleSelectChange("won")} className="btn btn-secondary">원</button>
+            //     <button type="button" onClick={()=>this.handleSelectChange("ubd")} className="btn btn-secondary">UBD</button>
+            //     <button type="button" onClick={()=>this.handleSelectChange("gookbob")} className="btn btn-secondary">국밥</button>
+            // </div>
+
+            <DropdownButton id="dropdown-variants-secondary" variant="secondary" title="환율 선택">
+                <Dropdown.Item onClick={()=>this.handleSelectChange("won")}>원</Dropdown.Item>
+                <Dropdown.Item onClick={()=>this.handleSelectChange("ubd")}>UBD</Dropdown.Item>
+                <Dropdown.Item onClick={()=>this.handleSelectChange("gookbob")}>국밥</Dropdown.Item>
+            </DropdownButton>
         )
     }
 

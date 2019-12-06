@@ -37,6 +37,19 @@ class Appshell extends Component {
         menu:''
     }
 
+    // copyright = () =>{
+    //     return (
+    //       <Typography variant="body2" color="textSecondary" align="center">
+    //         {'Copyright © '}
+    //         <span color="inherit">
+    //           Your Website
+    //         </span>{' '}
+    //         {new Date().getFullYear()}
+    //         {'.'}
+    //       </Typography>
+    //     );
+    //   }
+
     handleDrawerToggle = () =>{
         this.setState({toggle: !this.state.toggle})
     }
@@ -62,7 +75,10 @@ class Appshell extends Component {
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.toggle} onBlur={this.handleDrawerToggle}>
-                    <MenuItem onClick={this.handleDrawerToggle}><HomeIcon/></MenuItem>
+                    <MenuItem onClick={()=>{
+                        this.setState({menu:'Home'})
+                        this.props.history.push("/app/home")
+                    }}><HomeIcon/></MenuItem>
                     <MenuItem onClick={() => {
                         this.setState({menu:'Sarary'})
                         this.props.history.push("/app/sarary")

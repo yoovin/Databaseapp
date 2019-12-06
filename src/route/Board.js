@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import {table, thead, tbody} from 'react-bootstrap'
+import {InputGroup, FormControl, Button} from 'react-bootstrap'
 
 export default class Board extends Component {
     render() {
@@ -37,6 +37,16 @@ export default class Board extends Component {
                     </tbody>
                     </table>
                 {/* </div> */}
+                <InputGroup className="mb-3">
+                    <FormControl
+                    placeholder="새로운 글 내용"
+                    aria-label="글쓰기"
+                    aria-describedby="basic-addon2"
+                    />
+                    <InputGroup.Append>
+                    <Button variant="outline-secondary">글쓰기</Button>
+                    </InputGroup.Append>
+                </InputGroup>
             </div>
         )
     }
