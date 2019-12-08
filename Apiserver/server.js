@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000
 // Models
 const crewNotice = require('./Model/Crewnotice')
 const Employee = require('./Model/Employee')
+const Schedule = require('./Model/Schedule')
 
 // Library
 const crewLib = require('./lib/crewLib')
@@ -30,6 +31,14 @@ app.get('/crew/getnotice', (req, res) => {
     crewLib.getNotice(req, res, crewNotice)
 })
 
+app.get('/crew/getsalarytime', (req, res) => {
+    crewLib.getSalaryTime(req, res, Employee)
+})
+
+app.get('/crew/getmovieschedule', (req, res) => {
+    crewLib.getMovieSchedule(req, res, Schedule)
+})
+
 
 
 // app.post
@@ -50,6 +59,10 @@ app.post('/post/addcrewnotice', (req, res) => {
 
 app.post('/post/crewinsert', (req, res) => {
     adminLib.crewInsert(req, res, Employee)
+})
+
+app.post('/post/addmovieschedule', (req, res) => {
+    adminLib.addMovieSchedule(req, res, Schedule)
 })
 
 // app.listen

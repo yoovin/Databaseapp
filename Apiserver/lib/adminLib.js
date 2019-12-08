@@ -44,3 +44,20 @@ exports.crewInsert = (req, res, Employee) => {
         }
     })
 }
+
+exports.addMovieSchedule = (req, res, Schedule) => {
+    let schedule = new Schedule({
+        title: req.body.title,
+        onScreen: req.body.onScreen,
+        offScreen: req.body.offScreen
+    })
+    schedule.save(err => {
+        if(err){
+            console.error(err)
+            res.json({result:0})
+        } else {
+            console.log("Schedule added!")
+            res.json({result:1})
+        }
+    })
+}

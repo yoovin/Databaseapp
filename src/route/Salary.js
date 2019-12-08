@@ -1,15 +1,29 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 import {Dropdown, DropdownButton} from 'react-bootstrap'
 
 export default class Salary extends Component {
 
     state = {
-        workTime:0,
+        accuTime:0,
+        todayTime:0,
         money:0,
         hangleMoney:'',
         unit:'won',
         userName: window.sessionStorage.getItem('name')
+    }
+
+    componentWillMount(){
+        axios.get('/crew/getsalarytime',{
+            params:{
+                id:window.sessionStorage.getItem('employId')
+            }
+        })
+        .then((res)=>{
+            this.setState({accuTime:res.data.time})
+        })
+        .catch(err=>console.log(err))
     }
 
     componentDidMount(){
@@ -37,12 +51,13 @@ export default class Salary extends Component {
         return time
       }
     printSalary = () => {
-        const hiredTime = new Date(2019, 1, 23, 8)
+        const todayStartTime = new Date(2019, 11, 8, 14)
         const thisTime = new Date()
-        const hiredSecond = Date.parse(hiredTime)
+        const todayStartSecond = Date.parse(todayStartTime)
         const thisSecond = Date.parse(thisTime)
 
-        let gookMili = thisSecond - hiredSecond
+        // let gookMili = thisSecond - hiredSecond
+        let gookMili = this.state.accuTime + (thisSecond - todayStartSecond)
         let gookMinute = gookMili / 60000
         let gookMoney = gookMinute * 139.17
 

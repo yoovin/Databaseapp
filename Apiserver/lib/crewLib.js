@@ -9,6 +9,28 @@ exports.getNotice = (req, res, Notice) =>{
     }).sort({_id:-1})
 }
 
+exports.getSalaryTime = (req, res, Employee) => {
+    let id = req.query.id
+    console.log(id)
+    Employee.findOne({employId:id}, (err, data) => {
+        if(err){
+            console.error(err)
+            return res.json({result:0})
+        }
+        res.json({time:data.accuTime})
+    })
+}
+
+exports.getMovieSchedule = (req, res, Schedule) => {
+    Schedule.find((err, data) => {
+        if(err){
+            console.error(err)
+            return res.status(500).send({error:'database failure'})
+        }
+        return res.json(data)
+    })
+}
+
 // Post side
 
 exports.login = (req, res, Employee) => {

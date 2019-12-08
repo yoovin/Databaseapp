@@ -6,4 +6,4 @@ const notiSchema = new mongoose.Schema({
     date:{type:Date, required:true, default:Date.now}
 })
 
-module.exports = mongoose.model('notice', notiSchema)
+module.exports = mongoose.model('crewnotice', notiSchema)

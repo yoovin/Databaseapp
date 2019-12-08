@@ -79,7 +79,7 @@ class Appshell extends Component {
                         this.props.history.push("/app/salary")
                         }}><MonetizationOnOutlinedIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={() => {
-                        this.setState({menu:'일정'})
+                        this.setState({menu:'상영일정'})
                         this.props.history.push("/app/calendar")
                         }}><DateRangeIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={() =>{
