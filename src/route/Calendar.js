@@ -38,10 +38,7 @@ export default class Calendar extends Component {
                     <br/>
                     {/* {date.toDateString()}<br/> */}
                     <span>
-                        {date.getFullYear()}년
-                        {date.getMonth()+1}월
-                        {date.getDate()}일
-                        {this.day[date.getDay()]}요일
+                        {date.getFullYear()}년 {date.getMonth()+1}월 {date.getDate()}일 {this.day[date.getDay()]}요일
                     </span><br/>
                     <hr/>
                     {/* <span>

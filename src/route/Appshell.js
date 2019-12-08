@@ -14,6 +14,7 @@ import DateRangeIcon from '@material-ui/icons/DateRange';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 // Routes
 
@@ -66,14 +67,18 @@ class Appshell extends Component {
                             {this.state.menu}
                         </Typography>
                         <IconButton onClick={() => {
-                            this.setState({menu:"Profile"})
-                            this.props.history.push('/app/profile')
+                            window.sessionStorage.clear()
+                            this.props.history.push("/")
                         }}>
-                            <PersonOutlineRoundedIcon/>
+                            <ExitToAppIcon/>
                         </IconButton>
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.toggle} onBlur={this.handleDrawerToggle}>
+                    <MenuItem onClick={() => {
+                        this.setState({menu:'프로필'})
+                        this.props.history.push('/app/profile')
+                        }}><PersonOutlineRoundedIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={() => {
                         this.setState({menu:'급여'})
                         this.props.history.push("/app/salary")

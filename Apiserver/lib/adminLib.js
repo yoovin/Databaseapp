@@ -32,7 +32,8 @@ exports.crewInsert = (req, res, Employee) => {
         employId:req.body.employId,
         branchId:req.body.branchId,
         name:req.body.name,
-        class:req.body.class
+        class:req.body.class,
+        tel: req.body.tel
     })
     employee.save(err => {
         if(err){

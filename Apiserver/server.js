@@ -16,7 +16,7 @@ const adminLib = require('./lib/adminLib')
 // Connect Database
 var db = mongoose.connection
 db.on('error', console.error)
-db.once('open', ()=>{
+db.once('open', () => {
     console.log("Connected to mongod server")
 })
 
@@ -38,8 +38,6 @@ app.get('/crew/getsalarytime', (req, res) => {
 app.get('/crew/getmovieschedule', (req, res) => {
     crewLib.getMovieSchedule(req, res, Schedule)
 })
-
-
 
 // app.post
 
@@ -64,6 +62,10 @@ app.post('/post/crewinsert', (req, res) => {
 app.post('/post/addmovieschedule', (req, res) => {
     adminLib.addMovieSchedule(req, res, Schedule)
 })
+
+
+// 서버에서 돌리는 수준의 데이터들
+
 
 // app.listen
 app.listen(port, console.log("Database app 돌아가는중"))
