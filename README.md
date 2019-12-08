@@ -5,8 +5,11 @@
 #### Front
 * React
 * Material UI
+* React-Bootstrap
 
 #### Backend
 * Node.js
 * Express
 * MongoDB
+* Mongoose
+* axios
