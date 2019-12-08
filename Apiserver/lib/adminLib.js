@@ -10,7 +10,7 @@ exports.getNotice = (req, res, Notice) => {
 }
 
 exports.getCrews = (req, res, Employee) => {
-    Employee.find((err,data)=>{
+    Employee.find({class:"Crew"},(err,data)=>{
         if(err){
             console.error(err)
             return res.status(500).send({error:'database failure'})

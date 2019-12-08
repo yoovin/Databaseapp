@@ -72,13 +72,26 @@ app.post('/post/addmovieschedule', (req, res) => {
 
 // 서버에서 돌리는 수준의 데이터들
 var task = {}
+var taskData = [0,0,0]
 
 app.get('/crew/gettask', (req, res) => {
     res.json(task)
 })
 
+app.get('/crew/gettasknum', (req, res) => {
+    res.send(taskData)
+})
+
 app.post('/post/addcrewtask', (req, res) => {
     task[req.body.id] = req.body.task
+    if(req.body.task === "Ticketing"){
+        taskData[0] = taskData[0] + 1
+    }else if(req.body.task === "Cafeteria"){
+        taskData[1] = taskData[1] + 1
+    }else if(req.body.task === "Maintenance"){
+        taskData[2] = taskData[2] + 1
+    }
+    res.json({result:1})
 })
 
 // app.listen

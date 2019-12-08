@@ -21,6 +21,7 @@ import Dashboard from './admin/Dashboard'
 import cDashboard from './cdmin/Dashboard'
 import Schedule from './cdmin/Schedule'
 import Crew from './cdmin/Crew';
+import cBoard from './cdmin/Board';
 
 export default class App extends Component {
   render() {
@@ -40,6 +41,7 @@ export default class App extends Component {
           <Route exact path="/cdmin" component={cDashboard}/>
           <Route exact path="/cdmin/schedule" component={Schedule}/>
           <Route exact path="/cdmin/crews" component={Crew}/>
+          <Route exact path="/cdmin/board" component={cBoard}/>
         </div>
       </Router>
     )

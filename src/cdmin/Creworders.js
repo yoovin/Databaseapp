@@ -35,15 +35,19 @@ function Creworder(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {state.rows.map(row => (
-            <TableRow key={row._id}>
-              <TableCell>{row.employId}</TableCell>
-              <TableCell>{row.branchId}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.tel}</TableCell>
-              <TableCell>Off</TableCell>
-            </TableRow>
-          ))}
+          {state.rows.map(row => {
+              if(row.class === "Crew"){
+                  return(
+                    <TableRow key={row._id}>
+                    <TableCell>{row.employId}</TableCell>
+                    <TableCell>{row.branchId}</TableCell>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.tel}</TableCell>
+                    <TableCell>{state.task[row.employId] ? state.task[row.employId] :"Offline"}</TableCell>
+                  </TableRow>
+                  )
+              }
+          })}
         </TableBody>
       </Table>
     </React.Fragment>
@@ -54,7 +58,7 @@ export default class Creworders extends Component {
 
     state = {
         rows:[],
-        
+        task:{}
     }
 
     componentWillMount(){
@@ -63,8 +67,13 @@ export default class Creworders extends Component {
             this.setState({rows:res.data})
         })
         .catch(err=>console.log(err))
-    }
 
+        axios.get('/crew/gettask')
+        .then((res)=>{
+            this.setState({task:res.data})
+        })
+        .catch(err=>console.log(err))
+    }
     render() {
         return (
             <div>
