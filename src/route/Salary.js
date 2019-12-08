@@ -2,15 +2,14 @@ import React, { Component } from 'react'
 
 import {Dropdown, DropdownButton} from 'react-bootstrap'
 
-export default class Sarary extends Component {
+export default class Salary extends Component {
 
     state = {
         workTime:0,
         money:0,
         hangleMoney:'',
         unit:'won',
-        // userName: window.sessionStorage.getItem('userName')
-        userName:'준선'
+        userName: window.sessionStorage.getItem('name')
     }
 
     componentDidMount(){

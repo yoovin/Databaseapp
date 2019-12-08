@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import axios from 'axios'
 
 function Copyright() {
   return (
@@ -169,8 +170,24 @@ export default class Signup extends Component {
 
   handleSignup = (e) => {
       e.preventDefault()
-      // axios.
-    }
+      axios({
+        method:'post',
+        url:'/crew/register',
+        data:{
+            id:this.state.id,
+            pw:this.state.pw,
+            branch:this.state.branch,
+            email:this.state.email
+        }
+    })
+    .then(res => {
+      if(res.data.result === 1){
+        this.props.history.push("/")
+      }else if(res.data.result === 0){
+        console.log("Register Failed!")
+      }
+    })
+  }
 
   render() {
     console.log(this.state)

@@ -1,15 +1,16 @@
 // Backend server
 const app = require('express')()
-const cors = require('cors')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 5000
 
 // Models
-const Notice = require('./Model/Crewnotice')
+const crewNotice = require('./Model/Crewnotice')
+const Employee = require('./Model/Employee')
 
 // Library
 const crewLib = require('./lib/crewLib')
+const adminLib = require('./lib/adminLib')
 
 // Connect Database
 var db = mongoose.connection
@@ -26,24 +27,29 @@ app.use(bodyParser.json())
 
 // app.get
 app.get('/crew/getnotice', (req, res) => {
-    crewLib.getNotice(req, res, Notice)
+    crewLib.getNotice(req, res, crewNotice)
 })
 
+
+
 // app.post
+
+// Crew
+app.post('/crew/login', (req, res) => {
+    crewLib.login(req, res, Employee)
+})
+
+app.post('/crew/register', (req, res) => {
+    crewLib.register(req, res, Employee)
+})
+
+// Admin
 app.post('/post/addcrewnotice', (req, res) => {
-    let notice = new Notice({
-        title: req.body.title,
-        desc: req.body.desc
-    })
-    notice.save(err =>{
-        if(err){
-            console.error(err)
-            res.json({result:0})
-        } else {
-            console.log("Notice added!")
-            res.json({result:1})
-        }
-    })
+    adminLib.addCrewNotice(req, res, crewNotice)
+})
+
+app.post('/post/crewinsert', (req, res) => {
+    adminLib.crewInsert(req, res, Employee)
 })
 
 // app.listen

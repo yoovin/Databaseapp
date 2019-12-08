@@ -76,7 +76,7 @@ class Appshell extends Component {
                 <Drawer open={this.state.toggle} onBlur={this.handleDrawerToggle}>
                     <MenuItem onClick={() => {
                         this.setState({menu:'급여'})
-                        this.props.history.push("/app/sarary")
+                        this.props.history.push("/app/salary")
                         }}><MonetizationOnOutlinedIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={() => {
                         this.setState({menu:'일정'})

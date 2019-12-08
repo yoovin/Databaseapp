@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import axios from 'axios'
+import axios from 'axios'
 
 function Copyright() {
   return (
@@ -127,7 +127,8 @@ export default class Signin extends Component {
 
     state={
         id:'',
-        pw:''
+        pw:'',
+        loginStatus:''
     }
 
     handleIdChange = (e) => {
@@ -140,11 +141,45 @@ export default class Signin extends Component {
 
     handleLogin = (e) => {
         e.preventDefault()
-        // axios.
-    }
+        axios({
+          method:'post',
+          url:'/crew/login',
+          data:{
+              id:this.state.id,
+              pw:this.state.pw
+          }
+      })
+      .then(res =>{
+          let {result} = res.data
+          if(result === "success"){
+            // Brawser Session에 저장
+            window.sessionStorage.setItem('name', res.data.userInfo.name)
+            window.sessionStorage.setItem('class', res.data.userInfo.class)
+            window.sessionStorage.setItem('email', res.data.userInfo.email)
+            window.sessionStorage.setItem('employId', res.data.userInfo.employId)
+            window.sessionStorage.setItem('salary', res.data.userInfo.salary)
+            window.sessionStorage.setItem('tel', res.data.userInfo.tel)
+            window.sessionStorage.setItem('branchId', res.data.userInfo.branchId)
+            this.props.history.push("/app/salary")
+          }else if(result === "password error"){
+              this.setState({
+                  loginStatus:"Password incorrect",
+                  id:'',
+                  pw:''
+              })
+              console.log(this.state)
+          }else if(result === "id error"){
+              this.setState({
+                  loginStatus:"ID incorrect",
+                  id:'',
+                  pw:''
+              })
+              console.log(this.state)
+          }
+      })
+  }
 
     render() {
-        console.log(this.state)
         return (
             <div>
                 <SignIn

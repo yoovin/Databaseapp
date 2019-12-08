@@ -11,7 +11,7 @@ import Profile from './route/Profile';
 import Signin from './route/Signin';
 import Signup from './route/Signup';
 import Appshell from './route/Appshell';
-import Sarary from './route/Sarary';
+import Salary from './route/Salary';
 import Task from './route/Task';
 
 // Admin page
@@ -25,7 +25,7 @@ export default class App extends Component {
           <Route path="/app" component={Appshell}/>
           <Route exact path="/" component={Signin}/>
           <Route exact path="/signup" component={Signup}/>
-          <Route exact path="/app/sarary" component={Sarary}/>
+          <Route exact path="/app/salary" component={Salary}/>
           <Route exact path="/app/calendar" component={Calendar}/>
           <Route exact path="/app/board" component={Board}/>
           <Route exact path="/app/profile" component={Profile}/>

@@ -1,5 +1,5 @@
 // Get side
-exports.getNotice = (req, res, Notice) =>{ 
+exports.getNotice = (req, res, Notice) => { 
     Notice.find((err,data)=>{
         if(err){
             console.error(err)
@@ -10,3 +10,37 @@ exports.getNotice = (req, res, Notice) =>{
 }
 
 // Post side
+
+exports.addCrewNotice = (req, res, crewNotice) => {
+    let notice = new crewNotice({
+        title: req.body.title,
+        desc: req.body.desc
+    })
+    notice.save(err =>{
+        if(err){
+            console.error(err)
+            res.json({result:0})
+        } else {
+            console.log("Notice added!")
+            res.json({result:1})
+        }
+    })
+}
+
+exports.crewInsert = (req, res, Employee) => {
+    let employee = new Employee({
+        employId:req.body.employId,
+        branchId:req.body.branchId,
+        name:req.body.name,
+        class:req.body.class
+    })
+    employee.save(err => {
+        if(err){
+            console.error(err)
+            res.json({result:0})
+        } else {
+            console.log("Notice added!")
+            res.json({result:1})
+        }
+    })
+}
