@@ -28,7 +28,7 @@ exports.getMovieSchedule = (req, res, Schedule) => {
             return res.status(500).send({error:'database failure'})
         }
         return res.json(data)
-    })
+    }).sort({onScreen:1})
 }
 
 // Post side

@@ -9,6 +9,16 @@ exports.getNotice = (req, res, Notice) => {
     }).sort({_id:-1})
 }
 
+exports.getCrews = (req, res, Employee) => {
+    Employee.find((err,data)=>{
+        if(err){
+            console.error(err)
+            return res.status(500).send({error:'database failure'})
+        } 
+        return res.json(data)
+    })
+}
+
 // Post side
 
 exports.addCrewNotice = (req, res, crewNotice) => {
@@ -28,11 +38,12 @@ exports.addCrewNotice = (req, res, crewNotice) => {
 }
 
 exports.crewInsert = (req, res, Employee) => {
+    let employId = parseInt(req.body.employId)
+    let branchId = parseInt(req.body.branchId)
     let employee = new Employee({
-        employId:req.body.employId,
-        branchId:req.body.branchId,
+        employId: employId,
+        branchId: branchId,
         name:req.body.name,
-        class:req.body.class,
         tel: req.body.tel
     })
     employee.save(err => {
@@ -40,7 +51,7 @@ exports.crewInsert = (req, res, Employee) => {
             console.error(err)
             res.json({result:0})
         } else {
-            console.log("Notice added!")
+            console.log("Crew added!")
             res.json({result:1})
         }
     })

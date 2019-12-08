@@ -11,7 +11,8 @@ export default class Salary extends Component {
         money:0,
         hangleMoney:'',
         unit:'won',
-        userName: window.sessionStorage.getItem('name')
+        userName: window.sessionStorage.getItem('name'),
+        howUnit:""
     }
 
     componentWillMount(){
@@ -72,9 +73,18 @@ export default class Salary extends Component {
     selectBox = () =>{
         return(
             <DropdownButton id="dropdown-variants-secondary" variant="secondary" title="환율 선택">
-                <Dropdown.Item onClick={()=>this.handleSelectChange("won")}>원</Dropdown.Item>
-                <Dropdown.Item onClick={()=>this.handleSelectChange("ubd")}>UBD</Dropdown.Item>
-                <Dropdown.Item onClick={()=>this.handleSelectChange("gookbob")}>국밥</Dropdown.Item>
+                <Dropdown.Item onClick={()=>{
+                    this.handleSelectChange("won")
+                    this.setState({howUnit:""})
+                    }}>원</Dropdown.Item>
+                <Dropdown.Item onClick={()=>{
+                    this.handleSelectChange("ubd")
+                    this.setState({howUnit:"1UBD = 170000₩"})
+                }}>UBD</Dropdown.Item>
+                <Dropdown.Item onClick={()=>{
+                    this.handleSelectChange("gookbob")
+                    this.setState({howUnit:"1국밥 = 6000₩"})
+                    }}>국밥</Dropdown.Item>
             </DropdownButton>
         )
     }
@@ -97,18 +107,18 @@ export default class Salary extends Component {
             <div>
                 <h1>{this.state.userName}의</h1>
                 <h1>이번 달 근무시간은</h1>
-                <span className="hour">{workingTime.hour}</span> <span className="hangle">시간</span><br/>
-                <span className="minute">{workingTime.minute}</span> <span className="hangle">분 </span>
-                <span className="second">{workingTime.second}</span> <span className="hangle">초</span>
+                <span className="hour">{workingTime.hour}</span><span className="hangle">시간</span><br/>
+                <span className="minute">{workingTime.minute}</span><span className="hangle">분 </span>
+                <span className="second">{workingTime.second}</span><span className="hangle">초</span>
                 <br/>
                 <h2>이번 달 총 수입은</h2>
-                <span className="hangle-money">{Money}</span>
+                <span className="hangle-money">{Money}</span><br/>
+                <span className="howunit">{this.state.howUnit}</span>
                 <br/><br/>
                 {this.selectBox()}
             </div>
         )
     }
-
     render() {
         return(
             <div className="out">

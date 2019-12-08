@@ -159,7 +159,11 @@ export default class Signin extends Component {
             window.sessionStorage.setItem('salary', res.data.userInfo.salary)
             window.sessionStorage.setItem('tel', res.data.userInfo.tel)
             window.sessionStorage.setItem('branchId', res.data.userInfo.branchId)
-            this.props.history.push("/app/profile")
+            if(res.data.userInfo.class === 'Admin'){
+              this.props.history.push("/admin")
+            }else{
+              this.props.history.push("/app/profile")
+            }
           }else if(result === "password error"){
               this.setState({
                   loginStatus:"Password incorrect",

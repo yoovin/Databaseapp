@@ -27,6 +27,7 @@ app.use(bodyParser.json())
 
 
 // app.get
+// Crew
 app.get('/crew/getnotice', (req, res) => {
     crewLib.getNotice(req, res, crewNotice)
 })
@@ -37,6 +38,11 @@ app.get('/crew/getsalarytime', (req, res) => {
 
 app.get('/crew/getmovieschedule', (req, res) => {
     crewLib.getMovieSchedule(req, res, Schedule)
+})
+
+// Admin
+app.get('/admin/getcrews',(req, res) => {
+    adminLib.getCrews(req, res, Employee)
 })
 
 // app.post
@@ -65,7 +71,15 @@ app.post('/post/addmovieschedule', (req, res) => {
 
 
 // 서버에서 돌리는 수준의 데이터들
+var task = {}
 
+app.get('/crew/gettask', (req, res) => {
+    res.json(task)
+})
+
+app.post('/post/addcrewtask', (req, res) => {
+    task[req.body.id] = req.body.task
+})
 
 // app.listen
 app.listen(port, console.log("Database app 돌아가는중"))

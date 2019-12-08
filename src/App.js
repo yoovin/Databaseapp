@@ -17,6 +17,11 @@ import Task from './route/Task';
 // Admin page
 import Dashboard from './admin/Dashboard'
 
+// Cdmin page
+import cDashboard from './cdmin/Dashboard'
+import Schedule from './cdmin/Schedule'
+import Crew from './cdmin/Crew';
+
 export default class App extends Component {
   render() {
     return (
@@ -31,6 +36,10 @@ export default class App extends Component {
           <Route exact path="/app/profile" component={Profile}/>
           <Route exact path="/app/task" component={Task}/>
           <Route exact path="/admin" component={Dashboard}/>
+
+          <Route exact path="/cdmin" component={cDashboard}/>
+          <Route exact path="/cdmin/schedule" component={Schedule}/>
+          <Route exact path="/cdmin/crews" component={Crew}/>
         </div>
       </Router>
     )

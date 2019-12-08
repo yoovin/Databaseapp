@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Animated} from "react-animated-css";
+// import {Animated} from "react-animated-css";
 import {Accordion, Card, Button} from 'react-bootstrap'
 import axios from 'axios'
 // import {InputGroup, FormControl, Button, Dropdown, DropdownButton} from 'react-bootstrap'
