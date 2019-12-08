@@ -8,6 +8,9 @@ const port = process.env.PORT || 5000
 const crewNotice = require('./Model/Crewnotice')
 const Employee = require('./Model/Employee')
 const Schedule = require('./Model/Schedule')
+const Movie = require('./Model/Movie')
+const Maintenance = require('./Model/Maintenance')
+const Cafeteria = require('./Model/Cafeteria')
 
 // Library
 const crewLib = require('./lib/crewLib')
@@ -45,6 +48,18 @@ app.get('/admin/getcrews',(req, res) => {
     adminLib.getCrews(req, res, Employee)
 })
 
+app.get('/admin/getmovies', (req, res) => {
+    adminLib.getMovies(req, res, Movie)
+})
+
+app.get('/admin/getcafes', (req, res) =>{
+    adminLib.getCafes(req, res, Cafeteria)
+})
+
+app.get('/admin/getmains', (req, res) =>{
+    adminLib.getMains(req, res, Maintenance)
+})
+
 // app.post
 
 // Crew
@@ -67,6 +82,18 @@ app.post('/post/crewinsert', (req, res) => {
 
 app.post('/post/addmovieschedule', (req, res) => {
     adminLib.addMovieSchedule(req, res, Schedule)
+})
+
+app.post('/post/addmovie', (req, res) => {
+    adminLib.addMovie(req, res, Movie)
+})
+
+app.post('/post/addmain', (req, res) => {
+    adminLib.addMain(req, res, Maintenance)
+})
+
+app.post('/post/addcafe', (req, res) => {
+    adminLib.addCafe(req, res, Cafeteria)
 })
 
 

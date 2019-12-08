@@ -160,7 +160,7 @@ export default class Signin extends Component {
             window.sessionStorage.setItem('tel', res.data.userInfo.tel)
             window.sessionStorage.setItem('branchId', res.data.userInfo.branchId)
             if(res.data.userInfo.class === 'Admin'){
-              this.props.history.push("/admin")
+              this.props.history.push("/admin/financial")
             }else{
               this.props.history.push("/app/profile")
             }

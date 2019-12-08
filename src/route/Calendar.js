@@ -41,9 +41,9 @@ export default class Calendar extends Component {
                         {date.getFullYear()}년 {date.getMonth()+1}월 {date.getDate()}일 {this.day[date.getDay()]}요일
                     </span><br/>
                     <hr/>
-                    <span>
+                    {/* <span>
                         {Date.parse(date)}
-                    </span>
+                    </span> */}
                     <ListGroup variant="flush">
                         {movies ? movies.map(movie => {
                             if(movie.onScreen <= Date.parse(date) && 

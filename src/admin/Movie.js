@@ -21,9 +21,9 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 
 // Components
 import { mainListItems} from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
+import Genrechart from './Genrechart';
+import Movietable from './Movietable';
+import Title from './Title'
 
 function Copyright() {
   return (
@@ -115,7 +115,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 240,
+    height: 350,
   },
 }));
 
@@ -145,7 +145,7 @@ export default function Dashboard() {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            Movie
           </Typography>
           <IconButton color="inherit">
               <NotificationsIcon />
@@ -172,21 +172,16 @@ export default function Dashboard() {
         <Container maxWidth="lg" className={classes.container}>
           <Grid container spacing={3}>
             {/* Chart */}
-            <Grid item xs={12} md={8} lg={9}>
+            <Grid item xs={12} md={12} lg={12}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
-              </Paper>
-            </Grid>
-            {/* Recent Deposits */}
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper className={fixedHeightPaper}>
-                <Deposits />
+                <Title>Genre Statistics</Title>
+                <Genrechart />
               </Paper>
             </Grid>
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <Orders />
+                <Movietable />
               </Paper>
             </Grid>
           </Grid>

@@ -15,13 +15,12 @@ import Salary from './route/Salary';
 import Task from './route/Task';
 
 // Admin page
-import Dashboard from './admin/Dashboard'
-
-// Cdmin page
-import cDashboard from './cdmin/Dashboard'
-import Schedule from './cdmin/Schedule'
-import Crew from './cdmin/Crew';
-import cBoard from './cdmin/Board';
+import Schedule from './admin/Schedule'
+import Crew from './admin/Crew';
+import cBoard from './admin/Board';
+import Financial from './admin/Financial';
+import Goods from './admin/Goods';
+import Movie from './admin/Movie';
 
 export default class App extends Component {
   render() {
@@ -36,12 +35,13 @@ export default class App extends Component {
           <Route exact path="/app/board" component={Board}/>
           <Route exact path="/app/profile" component={Profile}/>
           <Route exact path="/app/task" component={Task}/>
-          <Route exact path="/admin" component={Dashboard}/>
 
-          <Route exact path="/cdmin" component={cDashboard}/>
-          <Route exact path="/cdmin/schedule" component={Schedule}/>
-          <Route exact path="/cdmin/crews" component={Crew}/>
-          <Route exact path="/cdmin/board" component={cBoard}/>
+          <Route exact path="/admin/schedule" component={Schedule}/>
+          <Route exact path="/admin/crews" component={Crew}/>
+          <Route exact path="/admin/board" component={cBoard}/>
+          <Route exact path="/admin/financial" component={Financial}/>
+          <Route exact path="/admin/goods" component={Goods}/>
+          <Route exact path="/admin/movie" component={Movie}/>
         </div>
       </Router>
     )
