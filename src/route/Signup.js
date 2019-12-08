@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Signup() {
+function SignUp(props) {
   const classes = useStyles();
 
   return (
@@ -59,18 +59,20 @@ export default function Signup() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} 
+            onSubmit={props.handleSignup}
+            noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="employ ID"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
+                id="employ ID"
+                label="Employ ID"
+                onChange={props.handleIdChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -78,21 +80,10 @@ export default function Signup() {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="branchid"
+                label="Branch ID"
+                name="branchid"
+                onChange={props.handleBranchChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,6 +96,18 @@ export default function Signup() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={props.handlePwChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                onChange={props.handleEmailChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -125,7 +128,7 @@ export default function Signup() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
@@ -137,4 +140,51 @@ export default function Signup() {
       </Box>
     </Container>
   );
+}
+
+export default class Signup extends Component {
+
+  state = {
+    id:'',
+    pw:'',
+    branch:'',
+    email:''
+  }
+
+  handleIdChange = (e) => {
+      this.setState({id:e.target.value})
+    }
+
+  handlePwChange = (e) => {
+      this.setState({pw:e.target.value})
+    }
+
+  handleBranchChange = (e) =>{
+      this.setState({branch:e.target.value})
+    }
+
+  handleEmailChange = (e) =>{
+    this.setState({email:e.target.value})
+    }
+
+  handleSignup = (e) => {
+      e.preventDefault()
+      // axios.
+    }
+
+  render() {
+    console.log(this.state)
+    return (
+      <div>
+        <SignUp
+        state={this.state}
+        handleIdChange={this.handleIdChange}
+        handlePwChange={this.handlePwChange}
+        handleBranchChange={this.handleBranchChange}
+        handleEmailChange={this.handleEmailChange}
+        handleSignup={this.handleSignup}
+        />
+      </div>
+    )
+  }
 }

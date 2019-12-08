@@ -4,9 +4,16 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start":"pm2 start server.js --watch",
-    "stop":"pm2 stop server"
+    "start": "pm2 start server.js --name databaseapp --watch",
+    "stop": "pm2 stop databaseapp"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.7.12"
+  }
 }

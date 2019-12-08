@@ -9,7 +9,8 @@ export default class Sarary extends Component {
         money:0,
         hangleMoney:'',
         unit:'won',
-        userName: window.sessionStorage.getItem('userName')
+        // userName: window.sessionStorage.getItem('userName')
+        userName:'준선'
     }
 
     componentDidMount(){
@@ -56,12 +57,6 @@ export default class Sarary extends Component {
 
     selectBox = () =>{
         return(
-            // <div className="btn-group" role="group" aria-label="Basic example">
-            //     <button type="button" onClick={()=>this.handleSelectChange("won")} className="btn btn-secondary">원</button>
-            //     <button type="button" onClick={()=>this.handleSelectChange("ubd")} className="btn btn-secondary">UBD</button>
-            //     <button type="button" onClick={()=>this.handleSelectChange("gookbob")} className="btn btn-secondary">국밥</button>
-            // </div>
-
             <DropdownButton id="dropdown-variants-secondary" variant="secondary" title="환율 선택">
                 <Dropdown.Item onClick={()=>this.handleSelectChange("won")}>원</Dropdown.Item>
                 <Dropdown.Item onClick={()=>this.handleSelectChange("ubd")}>UBD</Dropdown.Item>

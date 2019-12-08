@@ -9,7 +9,7 @@ export default class Profile extends Component {
             <div className="out">
                 <div className="in">
                 <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={ps} />
+                <Card.Img variant="top" src={ps}/>
                 <Card.Body>
                     <Card.Title>Card Title</Card.Title>
                     <Card.Text>

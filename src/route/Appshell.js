@@ -9,7 +9,6 @@ import { Toolbar } from '@material-ui/core';
 
 // Icons
 import MenuItem from '@material-ui/core/MenuItem';
-import HomeIcon from '@material-ui/icons/Home';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
@@ -75,28 +74,24 @@ class Appshell extends Component {
                     </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.toggle} onBlur={this.handleDrawerToggle}>
-                    <MenuItem onClick={()=>{
-                        this.setState({menu:'Home'})
-                        this.props.history.push("/app/home")
-                    }}><HomeIcon/></MenuItem>
                     <MenuItem onClick={() => {
-                        this.setState({menu:'Sarary'})
+                        this.setState({menu:'급여'})
                         this.props.history.push("/app/sarary")
-                        }}><MonetizationOnOutlinedIcon/></MenuItem>
+                        }}><MonetizationOnOutlinedIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={() => {
-                        this.setState({menu:'Calendar'})
+                        this.setState({menu:'일정'})
                         this.props.history.push("/app/calendar")
-                        }}><DateRangeIcon/></MenuItem>
+                        }}><DateRangeIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={() =>{
-                        this.setState({menu:'Board'})
+                        this.setState({menu:'공지사항'})
                         this.props.history.push("/app/board")
                     }}>
-                    <BorderColorIcon/></MenuItem>
+                    <BorderColorIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={()=>{
-                        this.setState({menu:'Task'})
+                        this.setState({menu:'업무'})
                         this.props.history.push("/app/task")
                     }}>
-                    <TransferWithinAStationIcon/></MenuItem>
+                    <TransferWithinAStationIcon fontSize='large'/></MenuItem>
                 </Drawer>
             </div>
         )
