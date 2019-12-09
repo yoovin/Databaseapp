@@ -15,6 +15,7 @@ import EventIcon from '@material-ui/icons/Event';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
 import MovieIcon from '@material-ui/icons/Movie';
+import CreateIcon from '@material-ui/icons/Create';
 
 export const mainListItems = (
   <div>
@@ -45,7 +46,7 @@ export const mainListItems = (
     <Link to="/admin/board">
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <CreateIcon/>
       </ListItemIcon>
       <ListItemText primary="Board" />
     </ListItem>
@@ -68,27 +69,3 @@ export const mainListItems = (
     </Link>
   </div>
 );
-
-// export const secondaryListItems = (
-//   <div>
-//     <ListSubheader inset>Saved reports</ListSubheader>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Current month" />
-//     </ListItem>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Last quarter" />
-//     </ListItem>
-//     <ListItem button>
-//       <ListItemIcon>
-//         <AssignmentIcon />
-//       </ListItemIcon>
-//       <ListItemText primary="Year-end sale" />
-//     </ListItem>
-//   </div>
-// );

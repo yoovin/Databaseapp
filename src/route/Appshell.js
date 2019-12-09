@@ -12,7 +12,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MonetizationOnOutlinedIcon from '@material-ui/icons/MonetizationOnOutlined';
 import DateRangeIcon from '@material-ui/icons/DateRange';
 import PersonOutlineRoundedIcon from '@material-ui/icons/PersonOutlineRounded';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import TransferWithinAStationIcon from '@material-ui/icons/TransferWithinAStation';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
@@ -34,21 +34,8 @@ class Appshell extends Component {
 
     state = {
         toggle:false,
-        menu:''
+        menu:'프로필'
     }
-
-    // copyright = () =>{
-    //     return (
-    //       <Typography variant="body2" color="textSecondary" align="center">
-    //         {'Copyright © '}
-    //         <span color="inherit">
-    //           Your Website
-    //         </span>{' '}
-    //         {new Date().getFullYear()}
-    //         {'.'}
-    //       </Typography>
-    //     );
-    //   }
 
     handleDrawerToggle = () =>{
         this.setState({toggle: !this.state.toggle})
@@ -91,7 +78,7 @@ class Appshell extends Component {
                         this.setState({menu:'공지사항'})
                         this.props.history.push("/app/board")
                     }}>
-                    <BorderColorIcon fontSize='large'/></MenuItem>
+                        <AssignmentIcon fontSize='large'/></MenuItem>
                     <MenuItem onClick={()=>{
                         this.setState({menu:'업무'})
                         this.props.history.push("/app/task")
