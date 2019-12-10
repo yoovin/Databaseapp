@@ -278,9 +278,9 @@ export default class Goods extends Component {
         .catch(err => console.error(err))
     }
 
-    handleCafeMonth = (month) => {
-        this.setState({cafeMonth:month})
-        axios.get("/admin/getcafes",{
+    handleCafeMonth = async (month) => {
+        await this.setState({cafeMonth:month})
+        await axios.get("/admin/getcafes",{
             params:{
                 month:this.state.cafeMonth
             }
@@ -288,9 +288,9 @@ export default class Goods extends Component {
         .then(res => this.setState({cafe:res.data}))
         .catch(err => console.error(err))
     }
-    handleMainMonth = (month) => {
-        this.setState({mainMonth:month})
-        axios.get("/admin/getmains",{
+    handleMainMonth = async (month) => {
+        await this.setState({mainMonth:month})
+        await axios.get("/admin/getmains",{
             params:{
                 month:this.state.mainMonth
             }
